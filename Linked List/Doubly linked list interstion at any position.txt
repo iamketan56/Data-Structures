@@ -1,0 +1,84 @@
+#include<iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node * next;
+    node * prev;
+};
+node * head;
+node * insertionatbeg(node *head)
+{
+    int value;
+    cout<<"Enter the value to insert"<<endl;
+    cin>>value;
+    node * newnode= new node();
+    newnode->data=value;
+    newnode->next=head;
+    newnode->prev=NULL;
+    head=newnode;
+    return head;
+    }
+   void insertionatpos(node *head)
+{
+    int value,pos;
+    cout<<"Enter the value to insert"<<endl;
+    cin>>value;
+     cout<<"Enter the position to insert"<<endl;
+     cin>>pos;
+    node * newnode= new node();
+    newnode->data=value;
+    node * p=head;
+
+   for(int i=1;i<pos-1;i++)
+   {
+       p=p->next;
+   }
+   newnode->next=p->next;
+   newnode->prev=p;
+   p->next=newnode;
+    }
+
+node * createdoublylist(int n)
+{
+    int value;
+    head=new node();
+    cout<<"Enter the data for 1 node"<<endl;
+    cin>>value;
+    head->data=value;
+    head->next=NULL;
+    head->prev=NULL;
+    node * t=new node;
+    t=head;
+     for(int i=2;i<=n;i++)
+     {
+         node * newnode=new node();
+         cout<<"Enter the data for "<<i<<" node"<<endl;
+         cin>>value;
+         newnode->data=value;
+         newnode->next=NULL;
+         newnode->prev=t;
+         t->next=newnode;
+         t=newnode;
+     }
+     return head;
+}
+void display(node * head)
+{
+    while(head!=NULL)
+    {
+        cout<<head->data;
+        head=head->next;
+    }
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter the number of node"<<endl;
+    cin>>n;
+    head=createdoublylist(n);
+   /* head=insertionatbeg(head);*/
+    insertionatpos(head);
+    display(head);
+}
