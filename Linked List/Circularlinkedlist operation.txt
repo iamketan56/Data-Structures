@@ -1,0 +1,159 @@
+#include<iostream>
+using namespace std;
+class node
+{
+    public:
+    int data;
+    node * next;
+};
+node * head;
+node * createcircularlinkedlist(int n)
+{
+    int value;
+    cout<<"Enter the data for 1 node"<<endl;
+    cin>>value;
+    head=new node();
+    head->data=value;
+    head->next=head;
+    node * t,*last;
+     last=head;
+    for(int i=2;i<=n;i++)
+    {
+        t=new node();
+        cout<<"Enter the value for "<<i<<" node"<<endl;
+        cin>>value;
+        t->data=value;
+        t->next=last->next;
+        last->next=t;
+        last=t;
+    }
+    return head;
+}
+void insertionatpsotion(node * head)
+{
+    int position;
+    cout<<"Enter the position to insert"<<endl;
+    cin>>position;
+      node * t=new node();
+    node *p=head;
+    int value;
+    cout<<"Enter the value to insert "<<endl;
+    cin>>value;
+    t->data=value;
+    for(int i=1;i<position-1;i++)
+    {
+        p=p->next;
+    }
+     t->next=p->next;
+     p->next=t;
+
+}
+display(node * head)
+{
+    node * p;
+    p=head;
+    do
+    {
+        cout<<p->data;
+        p=p->next;
+    }while(p!=head);
+}
+
+node * insertionatbeg(node * head)
+{
+    node * t=new node();
+    node *p=head;
+    int value;
+    cout<<"Enter the value to insert "<<endl;
+    cin>>value;
+    t->data=value;
+    while(p->next!=head)
+    {
+        p=p->next;
+    }
+    p->next=t;
+    t->next=head;
+    head=t;
+    return head;
+}
+int main()
+{
+    int n;
+    cout<<"Enter the number of nodes"<<endl;
+    cin>>n;
+    head=createcircularlinkedlist(n);
+    display(head);
+   /* head=insertionatbeg(head);*/
+   insertionatpsotion(head);
+    display(head);
+}
+deletion
+#include<iostream>
+using namespace std;
+class node
+{
+    public:
+    int data;
+    node * next;
+};
+node * head;
+node * createcircularlinkedlist(int n)
+{
+    int value;
+    cout<<"Enter the data for 1 node"<<endl;
+    cin>>value;
+    head=new node();
+    head->data=value;
+    head->next=head;
+    node * t,*last;
+     last=head;
+    for(int i=2;i<=n;i++)
+    {
+        t=new node();
+        cout<<"Enter the value for "<<i<<" node"<<endl;
+        cin>>value;
+        t->data=value;
+        t->next=last->next;
+        last->next=t;
+        last=t;
+    }
+    return head;
+}display(node * head)
+{
+    node * p;
+    p=head;
+    do
+    {
+        cout<<p->data;
+        p=p->next;
+    }while(p!=head);
+}
+node * deleteatpos(node * head)
+{
+    int pos;
+    cout<<"Enter the position to delete "<<endl;
+    cin>>pos;
+    node * p=head;
+    node *q;
+    for(int i=1;i<pos-1;i++)
+    {
+        p=p->next;
+    }
+    q=p->next;
+    p->next=q->next;
+    delete q;
+    return head;
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter the number of nodes"<<endl;
+    cin>>n;
+    head=createcircularlinkedlist(n);
+    display(head);
+    cout<<"After deletion"<<endl;
+  /* head=deleteatbeg(head);*/
+  head=deleteatpos(head);
+    display(head);
+}
