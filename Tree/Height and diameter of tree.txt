@@ -1,0 +1,105 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+class Node {
+    public:
+    int data;
+     Node* left;
+     Node* right;
+    Node(int value)
+    {
+        data = value;
+        left = NULL;
+        right = NULL;
+    }
+};
+  int heightoftree(Node * node)
+  {
+      int leftheight,rightheight;
+      if(node == NULL)
+        {
+        return 0;
+      }
+      leftheight=heightoftree(node->left);
+      rightheight=heightoftree(node->right);
+     
+      if(leftheight>rightheight)
+      return leftheight+1;
+      else
+      return rightheight+1;
+      }
+int main()
+{
+ 
+     Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->right->right=new Node(5);
+    root->right->right->right=new Node(6);
+    root->right->right->right->right=new Node(7);
+    cout<<"Height of tree is: "<<heightoftree(root);
+}     
+Diameter of tree
+#include <bits/stdc++.h>
+using namespace std;
+ 
+class Node {
+    public:
+    int data;
+     Node* left;
+     Node* right;
+    Node(int value)
+    {
+        data = value;
+        left = NULL;
+        right = NULL;
+    }
+};
+int heightoftree(Node * );
+int max(int a, int b) { return (a > b)? a : b; }
+int diameter(Node * head)
+{
+   
+   if (head == NULL)
+     return 0;
+ 
+ 
+  int lheight = heightoftree(head->left);
+  int rheight = heightoftree(head->right);
+ 
+  int leftdiameter = diameter(head->left);
+  int rightdiameter = diameter(head->right);
+ 
+ 
+  return max(lheight + rheight + 1, max(leftdiameter, rightdiameter));
+}  
+ 
+int heightoftree(Node * node)
+  {
+      int leftheight,rightheight;
+      if(node == NULL)
+        {
+        return 0;
+      }
+      leftheight=heightoftree(node->left);
+      rightheight=heightoftree(node->right);
+     
+      if(leftheight>rightheight)
+      return leftheight+1;
+      else
+      return rightheight+1;
+      }
+ 
+int main()
+{
+
+     Node* root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->right->right=new Node(5);
+    root->right->right->right=new Node(6);
+    root->right->right->right->right=new Node(7);
+    cout<<"Diameter of tree is: "<<diameter(root);
+}    
