@@ -1,7 +1,7 @@
 # Data Strutures
  This repo provides an understanding  of data structures  with different  programs   
  <br><br>
- <b>The language used is C++ and  C</b>
+ <b>The language used is C++</b>
 <br><br>
 <a href="https://github.com/iamketan56/Data-Structures/tree/main/Recursion">1.Recursion</a><br>
 <a href="https://github.com/iamketan56/Data-Structures/tree/main/String">2.String</a><br>
